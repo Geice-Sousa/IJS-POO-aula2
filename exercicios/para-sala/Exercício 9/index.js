@@ -20,9 +20,9 @@ class Funcionario{
     }
 }
 
-const funcionaria = new Funcionario('geice', 123654789, 4500)
-funcionaria.receberAumento()
-funcionaria.exibirDados()
+const funcionaria = new Funcionario('geice', '123654789', 4500); // só usamos numeros como number se formos fazer conta, se for informação é string 
+funcionaria.receberAumento();
+funcionaria.exibirDados();
 
 class Gerente extends Funcionario{
     nivelDeGerencia;
@@ -39,9 +39,9 @@ class Gerente extends Funcionario{
     }
 }
 
-const gerente = new Gerente('akin', 123654789, 5500, 'pleno')
-gerente.receberAumento()
-gerente.exibirDados()
+const gerente = new Gerente('akin', '123654789', 5500, 'pleno');
+gerente.receberAumento();
+gerente.exibirDados();
 
 class Assistente extends Funcionario{
     matricula;
@@ -57,13 +57,13 @@ class Assistente extends Funcionario{
     }
 }
 
-const assistente = new Assistente('luã', 123654789, 3500, 125478)
-assistente.receberAumento()
-assistente.exibirDados()
+const assistente = new Assistente('luã', '123654789', 3500, '125478');
+assistente.receberAumento();
+assistente.exibirDados();
 
 class AssistenteTecnico extends Assistente{
-    aumento = 0;
     bonusSalarial;
+
     constructor(nome, cpf, salario, matricula, bonusSalarial) {
         super(nome, cpf, salario, matricula);
         this.bonusSalarial = bonusSalarial;
@@ -75,13 +75,12 @@ class AssistenteTecnico extends Assistente{
     }
 }
 
-const assistenteTecnico = new AssistenteTecnico('vitor', 123654789, 5500, 56323987, 250)
-assistenteTecnico.receberAumento()
-assistenteTecnico.exibirDados()
+const assistenteTecnico = new AssistenteTecnico('vitor', '123654789', 5500, '56323987', 250);
+assistenteTecnico.receberAumento();
+assistenteTecnico.exibirDados();
 
 
 class AssistenteAdministrativo extends Assistente{
-    aumento = 0;
     turno;
     adicionalNoturno;
 
@@ -93,10 +92,18 @@ class AssistenteAdministrativo extends Assistente{
 
     exibirDados(){
         super.exibirDados()
-        console.log(` Turno: ${this.turno}\n Adicional Noturno: R$${this.adicionalNoturno}`)
+        console.log(` Turno: ${this.turno}`)
+        
+        if((this.turno).toLowerCase() === 'noturno' || (this.turno).toLowerCase() === 'noite'){
+            console.log(` Adicional Noturno: R$${this.adicionalNoturno}`)
+        }
     }
 }
 
-const assistenteAdministrativo = new AssistenteAdministrativo('meimei', 123654789, 2500, 74128987, 'manhã', 0)
-assistenteAdministrativo.receberAumento()
-assistenteAdministrativo.exibirDados()
+const assistenteAdministrativo = new AssistenteAdministrativo('meimei', '123654789', 2500, '74128987', 'manhã', 0);
+assistenteAdministrativo.receberAumento();
+assistenteAdministrativo.exibirDados();
+
+const assistenteAdministrativo2 = new AssistenteAdministrativo('meilin', '123654789', 2500, '74128987', 'noite', 400);
+assistenteAdministrativo2.receberAumento();
+assistenteAdministrativo2.exibirDados();
